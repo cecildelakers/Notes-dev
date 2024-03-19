@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此文件定义了应用程序中一个菜单的布局。
+    菜单中包含了多个项目，每个项目对应一个功能。
+    具体功能通过项目对应的id和标题来定义。
+-->
+
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 删除功能的菜单项 -->
+    <item
+        android:id="@+id/menu_delete"
+        android:title="@string/menu_delete" />
+
+    <!-- 字体大小设置功能的菜单项 -->
+    <item
+        android:id="@+id/menu_font_size"
+        android:title="@string/menu_font_size"/>
+
+    <!-- 切换列表模式功能的菜单项 -->
+    <item
+        android:id="@+id/menu_list_mode"
+        android:title="@string/menu_list_mode" />
+
+    <!-- 分享功能的菜单项 -->
+    <item
+        android:id="@+id/menu_share"
+        android:title="@string/menu_share"/>
+
+    <!-- 发送到桌面功能的菜单项 -->
+    <item
+        android:id="@+id/menu_send_to_desktop"
+        android:title="@string/menu_send_to_desktop"/>
+
+    <!-- 提醒功能的菜单项 -->
+    <item
+        android:id="@+id/menu_alert"
+        android:title="@string/menu_alert" />
+
+    <!-- 删除提醒功能的菜单项 -->
+    <item
+        android:id="@+id/menu_delete_remind"
+        android:title="@string/menu_remove_remind" />
+</menu>

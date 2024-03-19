@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此文件定义了一个可搜索配置，用于指导系统如何对应用程序中的内容进行搜索。
+    它指定了搜索界面的显示信息、搜索建议的提供者等关键配置。
+-->
+
+<searchable xmlns:android="http://schemas.android.com/apk/res/android"
+    android:label="@string/search_label"
+    android:hint="@string/search_hint"
+    android:searchMode="queryRewriteFromText"
+
+    android:searchSuggestAuthority="notes"
+    android:searchSuggestIntentAction="android.intent.action.VIEW"
+    android:searchSettingsDescription="@string/search_setting_description"
+    android:includeInGlobalSearch="true" />

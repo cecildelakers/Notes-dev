@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此文件定义了一个LinearLayout布局，其中包含了一个CheckBox和一个NoteEditText。
+    布局宽度填充父容器，高度根据内容自动调整。
+    CheckBox用于复选操作，NoteEditText用于输入文本。
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <!-- 定义一个CheckBox，用于编辑项的选择 -->
+    <CheckBox
+        android:id="@+id/cb_edit_item"
+        android:layout_width="wrap_content"
+        android:layout_height="28dip"
+        android:checked="false"
+        android:focusable="false"
+        android:layout_gravity="top|left" />
+
+    <!-- 定义一个自定义的NoteEditText，用于输入文本，支持多行显示 -->
+    <net.micode.notes.ui.NoteEditText
+        android:id="@+id/et_edit_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingMultiplier="1.2"
+        android:layout_gravity="center_vertical"
+        android:textAppearance="@style/TextAppearancePrimaryItem"
+        android:background="@null" />
+</LinearLayout>

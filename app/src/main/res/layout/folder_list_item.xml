@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此文件定义了一个LinearLayout布局，用于显示文件夹名称。
+    布局宽度和高度都匹配父容器，最小高度为50dip。
+    布局内部包含一个TextView，用于显示文件夹名称。
+
+    Copyright (c) 2010-2011, The MiCode Open Source Community (www.micode.net)
+
+    版权所有，2010-2011年，MiCode开源社区（www.micode.net）。
+    本布局文件受Apache License, Version 2.0许可保护。
+    你可以在遵守许可条件下自由使用、复制、修改本文件。
+    详细许可信息请访问：http://www.apache.org/licenses/LICENSE-2.0
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="50dip">
+
+    <!--
+        定义一个TextView，用于显示文件夹名称。
+        布局宽度和高度都匹配父容器，文本居中显示。
+        使用了"TextAppearancePrimaryItem"样式定义文本外观。
+    -->
+    <TextView
+        android:id="@+id/tv_folder_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearancePrimaryItem" />
+</LinearLayout>

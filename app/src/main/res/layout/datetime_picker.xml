@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此布局文件用于创建一个水平线性布局，包含四个NumberPicker组件，用于选择日期、小时、分钟和AM/PM标志。
+    它是MiCode开源社区的一部分，受Apache 2.0许可证保护。
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_gravity="center_horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <NumberPicker
+        android:id="@+id/date"
+        android:layout_width="120dip"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
+    <NumberPicker
+        android:id="@+id/hour"
+        android:layout_width="50dip"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
+    <NumberPicker
+        android:id="@+id/minute"
+        android:layout_width="50dip"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
+    <NumberPicker
+        android:id="@+id/amPm"
+        android:layout_width="50dip"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+</LinearLayout>

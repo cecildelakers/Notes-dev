@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此文件定义了应用程序的菜单资源。
+    它使用Android的菜单XML格式来描述应用主界面及其它界面中可能出现的菜单项。
+
+    Copyright (c) 2010-2011, The MiCode Open Source Community (www.micode.net)
+
+    本文件受Apache License, Version 2.0保护；
+    除非符合许可条款，否则不得使用此文件。
+    您可以在以下地址获取许可副本：
+          http://www.apache.org/licenses/LICENSE-2.0
+
+    根据许可协议，除非法律要求或以书面形式同意，否则软件是按“原样”分发的，
+    不作任何明示或暗示的保证或条件。请参阅许可协议以了解具体权限和限制。
+-->
+
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 新建文件夹菜单项 -->
+    <item
+        android:id="@+id/menu_new_folder"
+        android:title="@string/menu_create_folder"/>
+
+    <!-- 导出文本菜单项 -->
+    <item
+        android:id="@+id/menu_export_text"
+        android:title="@string/menu_export_text"/>
+
+    <!-- 同步菜单项 -->
+    <item
+        android:id="@+id/menu_sync"
+        android:title="@string/menu_sync"/>
+
+    <!-- 设置菜单项 -->
+    <item
+        android:id="@+id/menu_setting"
+        android:title="@string/menu_setting" />
+
+    <!-- 搜索菜单项 -->
+    <item
+        android:id="@+id/menu_search"
+        android:title="@string/menu_search"/>
+</menu>
+

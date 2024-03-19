@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此文件定义了一个小部件提供者，它指定了小部件的初始布局、最小宽度和最小高度。
+    版权归2010-2011年 MiCode 开源社区所有 (www.micode.net)
+
+    该文件受 Apache 许可证 2.0 版保护；
+    除非适用法律要求或以书面形式同意，根据该许可证分发的软件均按“原样”分发，
+    不提供任何明示或暗示的保证。请参阅许可证文件以了解特定的使用权限和限制。
+-->
+
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialLayout="@layout/widget_4x"
+    android:minWidth="294dip"
+    android:minHeight="294dip"></appwidget-provider>
+

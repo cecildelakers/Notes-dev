@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此文件为颜色选择器的定义，用于根据不同的状态选择不同的颜色。
+    版权归 MiCode 开源社区所有 (www.micode.net)
+
+    遵循 Apache 2.0 许可证，详情请访问：http://www.apache.org/licenses/LICENSE-2.0
+
+    本文件定义了一个颜色选择器，但只包含了一个状态下的颜色定义。
+-->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 定义默认状态下的颜色为半透明的黑色 -->
+    <item android:color="#50000000" />
+</selector>

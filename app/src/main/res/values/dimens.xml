@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此文件为资源尺寸定义文件，用于定义应用中不同文本尺寸。
+    版权归 MiCode 开源社区所有 (www.micode.net)
+    采用 Apache 2.0 许可证进行授权，详情请参阅许可证条款:
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    以下为预定义的文本尺寸：
+-->
+
+<resources>
+    <!-- 超大文本尺寸定义 -->
+    <dimen name="text_font_size_super">33sp</dimen>
+    <!-- 大文本尺寸定义 -->
+    <dimen name="text_font_size_large">26sp</dimen>
+    <!-- 中等文本尺寸定义 -->
+    <dimen name="text_font_size_medium">20sp</dimen>
+    <!-- 正常文本尺寸定义 -->
+    <dimen name="text_font_size_normal">17sp</dimen>
+    <!-- 小文本尺寸定义 -->
+    <dimen name="text_font_size_small">14sp</dimen>
+</resources>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此XML文件定义了一个FrameLayout布局，用于显示一个便签项。
+    布局中包含了一个标题、时间、复选框和一个提示图标。
+
+    Copyright (c) 2010-2011, The MiCode Open Source Community (www.micode.net)
+
+    许可证信息: Apache License, Version 2.0
+    详细信息见: http://www.apache.org/licenses/LICENSE-2.0
+
+    除非法律要求或以书面形式同意, 依据该许可证分发的软件在"原样"基础上分发,
+    不提供任何明示或暗示的保证。详见许可证文件中特定的权限和限制条款。
+-->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/note_item"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <!-- 主要内容区域，线性布局管理器，垂直方向排列 -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
+
+        <!-- 内容区域，线性布局管理器，垂直方向排列 -->
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- 标题，通常不可见 -->
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:textAppearance="@style/TextAppearancePrimaryItem"
+                android:visibility="gone" />
+
+            <!-- 标题和时间显示区域，线性布局管理器，水平方向排列 -->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+
+                <!-- 便签标题，单行显示 -->
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:singleLine="true" />
+
+                <!-- 便签时间 -->
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearanceSecondaryItem" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 复选框，通常不可见 -->
+        <CheckBox
+            android:id="@android:id/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:clickable="false"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- 提示图标，位于右上角 -->
+    <ImageView
+        android:id="@+id/iv_alert_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right" />
+</FrameLayout>

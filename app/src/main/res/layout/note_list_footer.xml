@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此XML文件定义了一个视图(View)的布局属性。
+    版权归2010-2011年MiCode开源社区所有。
+    许可证：Apache License, Version 2.0
+    获取许可证请访问：http://www.apache.org/licenses/LICENSE-2.0
+
+    该视图的属性包括：
+    - 布局宽度：填充父容器宽度
+    - 布局高度：100dip
+    - 可见性：不可见
+    - 可聚焦：不可聚焦
+    - 背景：使用@drawable/list_footer_bg作为背景
+-->
+
+<View xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="100dip"
+    android:visibility="invisible"
+    android:focusable="false"
+    android:background="@drawable/list_footer_bg" />

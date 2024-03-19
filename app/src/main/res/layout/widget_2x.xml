@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此XML文件定义了一个FrameLayout布局，其中包含了一个ImageView和一个TextView。
+    布局尺寸为146dip x 146dip。ImageView用于显示背景图片，而TextView用于展示文本信息。
+    此布局适用于Android平台，通过指定Apache 2.0许可证，对使用、复制和修改等行为进行了规定。
+-->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="146dip"
+    android:layout_height="146dip">
+    <!-- 定义ImageView，用作布局的背景图片 -->
+    <ImageView
+        android:id="@+id/widget_bg_image"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+    <!-- 定义TextView，用于显示文本信息，设置了内边距、字体大小、颜色、最大行数和行间距 -->
+    <TextView
+        android:id="@+id/widget_text"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:paddingTop="20dip"
+        android:paddingLeft="15dip"
+        android:paddingRight="15dip"
+        android:textSize="14sp"
+        android:textColor="#FF663300"
+        android:maxLines="6"
+        android:lineSpacingMultiplier="1.2" />
+</FrameLayout>

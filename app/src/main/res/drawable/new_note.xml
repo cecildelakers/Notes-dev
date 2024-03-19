@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此文件定义了一个选择器，用于根据按钮的状态显示不同的图片。
+    它是资源文件的一部分，供Android应用程序使用。
+    版权归MiCode开源社区所有，受Apache 2.0许可证保护。
+    详细信息见底部的LICENSE文件。
+-->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 当按钮被按下时显示的图片 -->
+    <item android:state_pressed="true"
+        android:drawable="@drawable/new_note_pressed" />
+    <!-- 默认状态下的图片 -->
+    <item
+        android:drawable="@drawable/new_note_normal" />
+</selector>

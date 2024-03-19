@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此文件定义了一个菜单资源，用于在Android应用程序中显示一个搜索菜单项。
+    文件包含了一个<menu>元素，其中定义了一个<item>元素作为搜索菜单项。
+    此菜单项具有一个唯一的ID和一个显示的标题。
+
+    版权信息:
+    Copyright (c) 2010-2011, The MiCode Open Source Community (www.micode.net)
+
+    许可证:
+    本文件发布于Apache License, Version 2.0下。详情请访问:
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    限制:
+    除非适用法律要求或以书面形式同意，根据该许可证分发的软件都是按“原样”分发的，
+    不提供任何明示或暗示的保证。请参阅许可证文件了解特定的使用权限和限制。
+-->
+
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 定义一个菜单项，用于执行搜索操作 -->
+    <item
+        android:id="@+id/menu_search"
+        android:title="@string/menu_search" />
+</menu>
+

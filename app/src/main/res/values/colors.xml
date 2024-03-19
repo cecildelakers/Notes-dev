@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此文件为资源文件，定义了应用中使用的颜色资源。
+    版权归 MiCode 开源社区所有 (www.micode.net)
+
+    使用 Apache 2.0 许可证进行授权，详情请访问：
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    除非法律要求或以书面形式同意，根据该许可证分发的软件
+    是在“原样”基础上分发的，不提供任何明示或暗示的保证。
+    请参阅许可证文件了解具体权限和限制。
+-->
+
+<resources>
+    <!-- 定义了一个用于用户查询高亮的颜色 -->
+    <color name="user_query_highlight">#335b5b5b</color>
+</resources>
+

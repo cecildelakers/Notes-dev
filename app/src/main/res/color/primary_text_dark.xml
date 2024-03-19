@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    该文件定义了一个颜色选择器，用于根据视图的状态（按下、选中或其他）来改变其颜色。
+    版权归2010-2011年 MiCode 开源社区所有（www.micode.net）。
+    该文件受 Apache 2.0 许可证保护，详细信息请参见许可证条款：
+       http://www.apache.org/licenses/LICENSE-2.0
+-->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 定义按下状态的颜色，采用半透明的黑色（50%） -->
+    <item android:state_pressed="true" android:color="#88555555" />
+    <!-- 定义选中状态的颜色，采用浅灰色 -->
+    <item android:state_selected="true" android:color="#ff999999" />
+    <!-- 默认颜色，即未按下且未选中的状态 -->
+    <item android:color="#ff000000" />
+</selector>

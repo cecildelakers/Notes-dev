@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此文件为设置界面的配置文件，定义了用户可以在应用中进行设置的选项。
+    版权归 MiCode 开源社区所有 (www.micode.net)
+    采用 Apache 2.0 许可证进行授权，详情请参阅许可证条款：
+      http://www.apache.org/licenses/LICENSE-2.0
+-->
+
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 同步设置分类，包含与账户同步相关的设置项 -->
+    <PreferenceCategory
+        android:key="pref_sync_account_key">
+    </PreferenceCategory>
+
+    <!-- 随机背景设置分类，让用户可以选择是否启用随机背景显示 -->
+    <PreferenceCategory>
+        <CheckBoxPreference
+            android:key="pref_key_bg_random_appear"
+            android:title="@string/preferences_bg_random_appear_title"
+            android:defaultValue="false" />
+    </PreferenceCategory>
+</PreferenceScreen>

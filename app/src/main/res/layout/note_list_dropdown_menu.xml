@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    导入 Apache 2.0 许可证，指出文件的使用条件。
+    详细信息请访问 http://www.apache.org/licenses/LICENSE-2.0
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/navigation_bar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/selection_menu"
+        android:divider="?android:attr/listDividerAlertDialog"
+        android:singleLine="true"
+        android:gravity="left|center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        style="?android:attr/borderlessButtonStyle" />
+</LinearLayout>

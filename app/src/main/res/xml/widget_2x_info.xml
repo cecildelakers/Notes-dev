@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此文件定义了一个小部件提供者，它指定了应用程序小部件的布局和大小等信息。
+    Copyright (c) 2010-2011, The MiCode Open Source Community (www.micode.net)
+
+    此代码发布于 Apache License, Version 2.0 下；
+    除非适用法律要求或以书面形式同意，软件根据该许可证分发是基于“现状”基础的，
+    不提供任何明示或暗示的保证。请参阅许可证文件了解特定的使用权限和限制。
+    许可证可于以下网址获取：http://www.apache.org/licenses/LICENSE-2.0
+-->
+
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialLayout="@layout/widget_2x"
+    android:minWidth="146dip"
+    android:minHeight="146dip"></appwidget-provider>

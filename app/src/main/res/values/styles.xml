@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此资源文件定义了一系列文本外观样式和主题，用于定制应用程序中不同文本大小、颜色和样式。
+    版权归 MiCode 开源社区所有 (www.micode.net)
+    使用 Apache 2.0 许可证进行授权
+-->
+
+<resources>
+    <!-- 定义超大文本外观样式，包括字体大小和链接颜色 -->
+    <style name="TextAppearanceSuper">
+        <item name="android:textSize">@dimen/text_font_size_super</item>
+        <item name="android:textColorLink">#0000ff</item>
+    </style>
+    <!-- 定义大文本外观样式 -->
+    <style name="TextAppearanceLarge">
+        <item name="android:textSize">@dimen/text_font_size_large</item>
+        <item name="android:textColorLink">#0000ff</item>
+    </style>
+    <!-- 定义中等文本外观样式 -->
+    <style name="TextAppearanceMedium">
+        <item name="android:textSize">@dimen/text_font_size_medium</item>
+        <item name="android:textColorLink">#0000ff</item>
+    </style>
+    <!-- 定义正常文本外观样式 -->
+    <style name="TextAppearanceNormal">
+        <item name="android:textSize">@dimen/text_font_size_normal</item>
+        <item name="android:textColorLink">#0000ff</item>
+    </style>
+
+    <!-- 定义主要项目文本外观样式，适用于主文本，包括字体大小和颜色 -->
+    <style name="TextAppearancePrimaryItem">
+        <item name="android:textSize">@dimen/text_font_size_normal</item>
+        <item name="android:textColor">@color/primary_text_dark</item>
+    </style>
+
+    <!-- 定义次要项目文本外观样式，适用于辅助文本，包括字体大小和颜色 -->
+    <style name="TextAppearanceSecondaryItem">
+        <item name="android:textSize">@dimen/text_font_size_small</item>
+        <item name="android:textColor">@color/secondary_text_dark</item>
+    </style>
+
+    <!-- 定义菜单图标下方文本的外观样式，包括字体大小和颜色 -->
+    <style name="TextAppearanceUnderMenuIcon">
+        <item name="android:textSize">@dimen/text_font_size_normal</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <!-- 定义主要高亮文本外观样式，包括字体大小和颜色 -->
+    <style name="HighlightTextAppearancePrimary">
+        <item name="android:textSize">@dimen/text_font_size_normal</item>
+        <item name="android:textColor">@color/primary_text_dark</item>
+    </style>
+
+    <!-- 定义次要高亮文本外观样式，包括字体大小和颜色 -->
+    <style name="HighlightTextAppearanceSecondary">
+        <item name="android:textSize">@dimen/text_font_size_small</item>
+        <item name="android:textColor">@color/secondary_text_dark</item>
+    </style>
+
+    <!-- 定义一个主题，基于 Holo.Light 主题，用于笔记应用 -->
+    <style name="NoteTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/NoteActionBarStyle</item>
+    </style>
+
+    <!-- 定义笔记应用的 ActionBar 样式，隐藏 ActionBar -->
+    <style name="NoteActionBarStyle" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
+        <item name="android:displayOptions" />
+        <item name="android:visibility">gone</item>
+    </style>
+</resources>

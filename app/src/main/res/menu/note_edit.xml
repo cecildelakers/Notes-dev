@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此文件定义了应用程序的主菜单。
+    菜单选项包括创建新笔记、删除、调整字体大小、切换列表模式、分享、发送到桌面、提醒以及删除提醒。
+    版权归 MiCode 开源社区所有。
+-->
+
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 创建新笔记菜单项 -->
+    <item
+        android:id="@+id/menu_new_note"
+        android:title="@string/notelist_menu_new"/>
+
+    <!-- 删除菜单项 -->
+    <item
+        android:id="@+id/menu_delete"
+        android:title="@string/menu_delete"/>
+
+    <!-- 调整字体大小菜单项 -->
+    <item
+        android:id="@+id/menu_font_size"
+        android:title="@string/menu_font_size"/>
+
+    <!-- 切换列表模式菜单项 -->
+    <item
+        android:id="@+id/menu_list_mode"
+        android:title="@string/menu_list_mode" />
+
+    <!-- 分享菜单项 -->
+    <item
+        android:id="@+id/menu_share"
+        android:title="@string/menu_share"/>
+
+    <!-- 发送到桌面菜单项 -->
+    <item
+        android:id="@+id/menu_send_to_desktop"
+        android:title="@string/menu_send_to_desktop"/>
+
+    <!-- 提醒菜单项 -->
+    <item
+        android:id="@+id/menu_alert"
+        android:title="@string/menu_alert" />
+
+    <!-- 删除提醒菜单项 -->
+    <item
+        android:id="@+id/menu_delete_remind"
+        android:title="@string/menu_remove_remind" />
+</menu>

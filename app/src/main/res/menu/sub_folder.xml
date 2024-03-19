@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此文件定义了一个菜单资源，用于在应用程序中显示一个新的笔记选项。
+    版权归 MiCode 开源社区所有 (www.micode.net)
+
+    本文件受 Apache 2.0 许可证保护，关于许可证的详细信息，请访问：
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    除非适用法律要求或以书面形式同意，根据该许可证分发的软件
+    是在“原样”基础上分发的，不作任何明示或暗示的保证。
+    有关许可证的具体条款和限制，请参阅许可证文件。
+-->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 定义了一个菜单项，用于创建新的笔记 -->
+    <item
+        android:id="@+id/menu_new_note"
+        android:title="@string/notelist_menu_new" />
+</menu>

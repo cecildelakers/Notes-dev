@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此XML文件定义了一个LinearLayout，用于布局同步偏好设置的用户界面。
+    它包含一个按钮和一个文本视图，但文本视图默认是隐藏的。
+
+    版权声明：2010-2011年，MiCode开源社区。
+    许可证：Apache Software License 2.0
+    详细信息请参见http://www.apache.org/licenses/LICENSE-2.0
+
+    @author MiCode社区
+-->
+
+<LinearLayout android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 同步按钮：立即同步 -->
+    <Button
+        android:id="@+id/preference_sync_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dip"
+        android:layout_marginLeft="30dip"
+        android:layout_marginRight="30dip"
+        style="?android:attr/textAppearanceMedium"
+        android:text="@string/preferences_button_sync_immediately" />
+
+    <!-- 同步状态文本：默认隐藏 -->
+    <TextView
+        android:id="@+id/prefenerece_sync_status_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+</LinearLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此文件定义了应用程序中菜单项的布局。
+    它使用Android的菜单XML格式来描述菜单项及其属性。
+-->
+
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+        定义了一个菜单项，用于移动操作。该菜单项始终显示在动作栏中，并显示文本标签。
+        菜单项的图标和标题通过引用资源来定义。
+    -->
+    <item
+        android:id="@+id/move"
+        android:title="@string/menu_move"
+        android:icon="@drawable/menu_move"
+        android:showAsAction="always|withText" />
+
+    <!--
+        定义了一个菜单项，用于删除操作。和上面的移动操作类似，这个菜单项也始终显示在动作栏中，并带有文本标签。
+    -->
+    <item
+        android:id="@+id/delete"
+        android:title="@string/menu_delete"
+        android:icon="@drawable/menu_delete"
+        android:showAsAction="always|withText" />
+</menu>

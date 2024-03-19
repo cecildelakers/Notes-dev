@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此文件定义了一个LinearLayout布局，用于在Android应用中显示一个添加账户的选项。
+    布局采用垂直方向排列，主要包含一个TextView用于显示文本信息。
+
+    版权声明：2010-2011年，MiCode开源社区（www.micode.net）
+    本文件受Apache软件基金会许可协议2.0版（http://www.apache.org/licenses/LICENSE-2.0）保护。
+    除非符合许可协议条款，否则不得使用此文件。
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="50dip"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <!--
+        定义一个TextView组件，用于显示“添加账户”的文本信息。
+        该组件的宽度根据内容自动调整，高度随内容而定，并且居中显示。
+    -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/preferences_add_account" />
+</LinearLayout>

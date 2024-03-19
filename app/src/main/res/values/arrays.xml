@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此XML文件为资源字符串定义，包括备份格式和分享方式的菜单选项。
+    版权归MiCode开源社区所有，详细授权条款见Apache License 2.0。
+    http://www.apache.org/licenses/LICENSE-2.0
+-->
+
+<resources>
+    <!-- 定义导出笔记的备份格式，采用占位符方式，方便动态替换 -->
+    <string-array name="format_for_exported_note">
+        <item>-%s</item>      <!-- 文件夹名称格式 -->
+        <item>--%s</item>     <!-- 文件夹内笔记日期格式 -->
+        <item>--%s</item>     <!-- 笔记日期格式 -->
+        <item>--%s</item>     <!-- 笔记内容格式 -->
+    </string-array>
+
+    <!-- 定义菜单中分享方式的选项 -->
+    <string-array name="menu_share_ways">
+        <item>Messaging</item>
+        <item>Email</item>
+    </string-array>
+</resources>

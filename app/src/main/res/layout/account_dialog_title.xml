@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此XML文件定义了一个LinearLayout，用于显示账户对话框的标题和子标题。
+    它是MiCode开源社区的一部分，受Apache License 2.0保护。
+    详细信息见底部注释。
+-->
+
+<LinearLayout android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 标题文本视图，用于显示对话框的标题 -->
+    <TextView
+        android:id="@+id/account_dialog_title"
+        style="?android:attr/textAppearanceMedium"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:layout_marginTop="-2.7dip"
+        android:layout_marginBottom="-2.7dip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- 子标题文本视图，用于显示对话框的子标题信息 -->
+    <TextView
+        android:id="@+id/account_dialog_subtitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dip"
+        android:layout_marginBottom="1dip"
+        android:gravity="center" />
+
+</LinearLayout>

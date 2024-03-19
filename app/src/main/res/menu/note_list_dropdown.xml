@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    此文件定义了一个菜单资源。
+    Copyright (c) 2010-2011, The MiCode Open Source Community (www.micode.net)
+
+    此菜单资源受Apache License, Version 2.0保护。
+    你可以在http://www.apache.org/licenses/LICENSE-2.0获取许可证的副本。
+    除非依照适用法律或以书面形式同意，否则根据该许可证分发的软件应按“原样”分发，
+    不提供任何明示或暗示的保证。
+-->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 定义一个菜单项，用于选择所有项 -->
+    <item android:id="@+id/action_select_all" android:title="@string/menu_select_all" />
+</menu>
