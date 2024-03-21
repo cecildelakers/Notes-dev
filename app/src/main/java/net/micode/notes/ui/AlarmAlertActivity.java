@@ -45,23 +45,31 @@ import java.io.IOException;
  * 当一个笔记的提醒时间到达时，这个活动会被启动，显示提醒信息并播放提醒声音。
  */
 public class AlarmAlertActivity extends Activity implements OnClickListener, OnDismissListener {
-    private long mNoteId;      //文本在数据库存储中的ID号
-    private String mSnippet;   //闹钟提示时出现的文本片段
+    // 笔记的ID
+    private long mNoteId;
+    // 笔记内容的简短预览
+    private String mSnippet;
+    // 预览文本的最大长度
     private static final int SNIPPET_PREW_MAX_LEN = 60;
+    // 用于播放提醒声音的MediaPlayer对象
     MediaPlayer mPlayer;
 
+    /*
+     * onCreate 方法初始化活动，设置窗口特性，根据传入的Intent获取笔记ID和简短内容，
+     * 并根据情况显示对话框和播放声音。
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         //Bundle类型的数据与Map类型的数据相似，都是以key-value的形式存储数据的
         //onsaveInstanceState方法是用来保存Activity的状态的
         //能从onCreate的参数savedInsanceState中获得状态数据
+        super.onCreate(savedInstanceState);
+        // 请求无标题的窗口
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //界面显示——无标题
 
+        // 设置窗口在锁屏时也显示，并根据屏幕状态决定是否保持唤醒
         final Window win = getWindow();
         win.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
-
         if (!isScreenOn()) {
             win.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
                     //保持窗体点亮
@@ -70,10 +78,11 @@ public class AlarmAlertActivity extends Activity implements OnClickListener, OnD
                     | WindowManager.LayoutParams.FLAG_ALLOW_LOCK_WHILE_SCREEN_ON
                     //允许窗体点亮时锁屏
                     | WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR);
-        }//在手机锁屏后如果到了闹钟提示时间，点亮屏幕
+                    //在手机锁屏后如果到了闹钟提示时间，点亮屏幕
+        }
 
+        // 从Intent中获取笔记ID和简短内容
         Intent intent = getIntent();
-
         try {
             mNoteId = Long.valueOf(intent.getData().getPathSegments().get(1));
             mSnippet = DataUtils.getSnippetById(this.getContentResolver(), mNoteId);
@@ -84,19 +93,12 @@ public class AlarmAlertActivity extends Activity implements OnClickListener, OnD
                     : mSnippet;
             //判断标签片段是否达到符合长度
         } catch (IllegalArgumentException e) {
+            // 异常处理
             e.printStackTrace();
             return;
         }
-        /*
-        try
-        {
-        	// 代码区
-        }
-        catch(Exception e)
-        {
-        	// 异常处理
-        }
-                     代码区如果有错误，就会返回所写异常的处理。*/
+
+        // 如果笔记在数据库中可见，则显示动作对话框并播放声音，否则结束活动
         mPlayer = new MediaPlayer();
         if (DataUtils.visibleInNoteDatabase(getContentResolver(), mNoteId, Notes.TYPE_NOTE)) {
             showActionDialog();
@@ -109,16 +111,26 @@ public class AlarmAlertActivity extends Activity implements OnClickListener, OnD
         }
     }
 
+    /*
+     * 检查屏幕是否处于打开状态。
+     *
+     * @return 如果屏幕已打开则返回true，否则返回false。
+     */
     private boolean isScreenOn() {
         //判断屏幕是否锁屏，调用系统函数判断，最后返回值是布尔类型
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
         return pm.isScreenOn();
     }
 
+    /*
+     * 播放提醒声音。
+     * 根据系统设置选择合适的音频流类型，并尝试播放选定的报警声音。
+     */
     private void playAlarmSound() {
         //闹钟提示音激发
         Uri url = RingtoneManager.getActualDefaultRingtoneUri(this, RingtoneManager.TYPE_ALARM);
-        //调用系统的铃声管理URI，得到闹钟提示音
+
+        // 检查是否在静音模式下影响报警声音
         int silentModeStreams = Settings.System.getInt(getContentResolver(),
                 Settings.System.MODE_RINGER_STREAMS_AFFECTED, 0);
 
@@ -154,6 +166,10 @@ public class AlarmAlertActivity extends Activity implements OnClickListener, OnD
         }
     }
 
+    /*
+     * 显示动作对话框。
+     * 根据屏幕是否打开，设置对话框的按钮，并显示应用名称和笔记的简短内容。
+     */
     private void showActionDialog() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         //AlertDialog的构造方法全部是Protected的
@@ -172,11 +188,15 @@ public class AlarmAlertActivity extends Activity implements OnClickListener, OnD
         dialog.show().setOnDismissListener(this);
     }
 
+    /*
+     * 点击对话框按钮的响应处理。
+     * 根据点击的按钮启动编辑笔记的活动或结束当前活动。
+     */
     public void onClick(DialogInterface dialog, int which) {
+        //用which来选择click后下一步的操作
         switch (which) {
-            //用which来选择click后下一步的操作
             case DialogInterface.BUTTON_NEGATIVE:
-                //这是取消操作
+                // 如果点击的是“进入”按钮，则启动笔记编辑活动
                 Intent intent = new Intent(this, NoteEditActivity.class);
                 //实现两个类间的数据传输
                 intent.setAction(Intent.ACTION_VIEW);
@@ -185,22 +205,28 @@ public class AlarmAlertActivity extends Activity implements OnClickListener, OnD
                 //实现key-value对
                 //EXTRA_UID为key；mNoteId为键
                 startActivity(intent);
-                //开始动作
                 break;
             default:
+                // 关闭活动
                 //这是确定操作
                 break;
         }
     }
 
+    /*
+     * 对话框关闭时的处理。
+     * 停止播放提醒声音，结束当前活动。
+     */
     public void onDismiss(DialogInterface dialog) {
         //忽略
-        stopAlarmSound();
-        //停止闹钟声音
-        finish();
-        //完成该动作
+        stopAlarmSound();//停止闹钟声音
+        finish();//完成该动作
     }
 
+    /*
+     * 停止播放提醒声音。
+     * 如果MediaPlayer对象不为空，则停止播放并释放资源。
+     */
     private void stopAlarmSound() {
         if (mPlayer != null) {
             mPlayer.stop();
