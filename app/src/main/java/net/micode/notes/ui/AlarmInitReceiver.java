@@ -15,7 +15,6 @@ import android.database.Cursor;
 import net.micode.notes.data.Notes;
 import net.micode.notes.data.Notes.NoteColumns;
 
-
 public class AlarmInitReceiver extends BroadcastReceiver {
 
     // 查询笔记时需要的列
@@ -57,8 +56,7 @@ public class AlarmInitReceiver extends BroadcastReceiver {
                     // 创建PendingIntent，它是一个延迟的意图，可以在特定时间由系统触发
                     PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, sender, 0);
                     // 获取AlarmManager服务，用于设置提醒
-                    AlarmManager alermManager = (AlarmManager) context
-                            .getSystemService(Context.ALARM_SERVICE);
+                    AlarmManager alermManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
                     // 设置提醒
                     alermManager.set(AlarmManager.RTC_WAKEUP, alertDate, pendingIntent);
                 } while (c.moveToNext());
@@ -68,4 +66,3 @@ public class AlarmInitReceiver extends BroadcastReceiver {
         }
     }
 }
-
