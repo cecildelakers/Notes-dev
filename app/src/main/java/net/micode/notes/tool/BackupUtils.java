@@ -55,8 +55,9 @@ public class BackupUtils {
     }
 
     /**
-     * 定义备份或恢复状态的标志。
-     */
+     * 定义备份或恢复状态的标志
+    *
+    */
     // 当前，SD卡未挂载
     public static final int STATE_SD_CARD_UNMOUONTED = 0;
     // 备份文件不存在
