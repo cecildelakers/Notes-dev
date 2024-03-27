@@ -1,17 +1,9 @@
-/*
- * Copyright (c) 2010-2011, The MiCode Open Source Community (www.micode.net)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *        http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/**
+ * 该类定义了与笔记和文件夹相关的常量、数据列接口以及数据类型，提供了访问和管理笔记数据的基础功能，包括：
+ * 定义了笔记和文件夹的URI和权限标识。
+ * 包含了笔记和文件夹的各种属性列，如ID、父ID、创建日期、修改日期等。
+ * 定义了笔记数据列接口和通用数据列接口，包括行的唯一ID、MIME类型、数据内容等。
+ * 包含了文本笔记和通话记录笔记的具体实现，分别实现了数据列接口，并定义了各自的MIME类型、内容URI等。
  */
 
 package net.micode.notes.data;
