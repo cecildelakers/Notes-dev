@@ -61,7 +61,7 @@ public class DropdownMenu {
     public MenuItem findItem(int id) {
         return mMenu.findItem(id);
     }
-
+    //对于菜单选项的初始化，根据索引搜索菜单需要的选项
     /**
      * 设置按钮的标题。
      *
@@ -70,4 +70,5 @@ public class DropdownMenu {
     public void setTitle(CharSequence title) {
         mButton.setText(title);
     }
+    //布局文件，设置标题
 }

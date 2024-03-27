@@ -117,5 +117,7 @@ public class DateTimePickerDialog extends AlertDialog implements OnClickListener
             mOnDateTimeSetListener.OnDateTimeSet(this, mDate.getTimeInMillis());
         }
     }
+    //第一个参数arg0是接收到点击事件的对话框
+    //第二个参数arg1是该对话框上的按钮
 
 }

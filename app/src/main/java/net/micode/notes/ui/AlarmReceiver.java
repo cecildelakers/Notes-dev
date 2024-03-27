@@ -25,6 +25,8 @@ public class AlarmReceiver extends BroadcastReceiver {
         // 添加标志，表示在一个新的任务中启动Activity
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         // 根据设置的Intent启动Activity
+        //activity要存在于activity的栈中，而非activity的途径启动activity时必然不存在一个activity的栈
+        //所以要新起一个栈装入启动的activity
         context.startActivity(intent);
     }
 }

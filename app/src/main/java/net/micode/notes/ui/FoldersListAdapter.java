@@ -22,6 +22,10 @@ import net.micode.notes.data.Notes.NoteColumns;
 
 public class FoldersListAdapter extends CursorAdapter {
     // 查询时使用的列名数组
+    //CursorAdapter是Cursor和ListView的接口
+    //FoldersListAdapter继承了CursorAdapter的类
+    //主要作用是便签数据库和用户的交互
+    //这里就是用folder（文件夹）的形式展现给用户
     public static final String[] PROJECTION = {
             NoteColumns.ID,
             NoteColumns.SNIPPET
@@ -39,7 +43,7 @@ public class FoldersListAdapter extends CursorAdapter {
     public FoldersListAdapter(Context context, Cursor c) {
         super(context, c);
     }
-
+    //数据库操作
     /*
      * 创建新的列表项View
      * @param context 上下文对象。
