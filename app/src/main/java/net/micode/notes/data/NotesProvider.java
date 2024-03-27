@@ -8,7 +8,6 @@
  * - 数据通知：在数据改变时，通过ContentResolver发送通知，以便相关的观察者可以及时更新数据。
  * - 搜索建议：支持根据关键词模糊搜索笔记的标题和内容，并提供搜索建议功能。
  */
-
 package net.micode.notes.data;
 
 import android.app.SearchManager;
@@ -27,7 +26,6 @@ import net.micode.notes.R;
 import net.micode.notes.data.Notes.DataColumns;
 import net.micode.notes.data.Notes.NoteColumns;
 import net.micode.notes.data.NotesDatabaseHelper.TABLE;
-
 
 public class NotesProvider extends ContentProvider {
     private static final UriMatcher mMatcher;
