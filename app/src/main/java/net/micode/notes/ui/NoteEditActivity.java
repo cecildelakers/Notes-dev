@@ -75,7 +75,7 @@ import java.util.regex.Pattern;
 public class NoteEditActivity extends Activity implements OnClickListener,
         NoteSettingChangedListener, OnTextViewChangeListener {
     /**
-     * 头部视图的ViewHolder类，用于存储头部视图中的UI组件引用。
+     * 头部视图的ViewHolder类，用于存储头部视图中的UI组件引用的内部类。
      */
     private class HeadViewHolder {
         public TextView tvModified; // 显示修改日期的文本视图
