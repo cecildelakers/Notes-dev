@@ -147,6 +147,8 @@ public class DateTimePicker extends FrameLayout {
             }
         }
     };
+    //OnValueChangeListener，这是时间改变监听器，这里主要是对日期的监听
+    //将现在日期的值传递给mDate；updateDateControl是同步操作
 
 
     // 分别为分钟和AM/PM选择器监听器设置匿名内部类，实现数值变化时的处理逻辑。
@@ -279,6 +281,9 @@ public class DateTimePicker extends FrameLayout {
         mAmPmSpinner.setEnabled(enabled);
         mIsEnabled = enabled;
     }
+    //存在疑问！！！！！！！！！！！！！setEnabled的作用
+    //下面的代码通过原程序的注释已经比较清晰，另外可以通过函数名来判断
+    //下面的各函数主要是对上面代码引用到的各函数功能的实现
 
     /**
      * 获取控件的启用状态。
