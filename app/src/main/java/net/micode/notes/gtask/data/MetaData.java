@@ -115,3 +115,9 @@ public class MetaData extends Task {// 定义MetaData类，继承自Task类
     }
 
 }
+/*这段代码定义了一个用于处理元数据的类MetaData，它扩展了Task类。
+ * 该类提供了许多方法来设置和获取相关的元数据，
+ * 其中setMeta方法用于设置相关的gid和metaInfo（元信息），
+ * getRelatedGid方法用于获取相关的gid。
+ * 其他方法主要用于处理将元数据从远程JSON对象设置为本地对象、将本地JSON对象转换为本地内容等操作。
+ * 这些方法中的大多数是通过抛出IllegalAccessError来表示不应该被调用，因为它们不适用于此类的特定情况。*/
