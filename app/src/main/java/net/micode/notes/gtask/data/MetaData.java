@@ -3,18 +3,18 @@
  */
 package net.micode.notes.gtask.data;
 
-import android.database.Cursor;
-import android.util.Log;
+import android.database.Cursor;// 导入Android数据库Cursor类，用于操作数据库
+import android.util.Log;// 导入Android日志类，用于记录日志信息
 
-import net.micode.notes.tool.GTaskStringUtils;
+import net.micode.notes.tool.GTaskStringUtils;// 导入应用程序自定义的工具类，可能包含一些字符串处理的工具方法
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.json.JSONException;// 导入JSON异常类，用于处理JSON操作中的异常
+import org.json.JSONObject;// 导入JSON对象类，用于表示JSON格式的数据
 
-public class MetaData extends Task {
-    private final static String TAG = MetaData.class.getSimpleName(); // 日志标签
+public class MetaData extends Task {// 定义MetaData类，继承自Task类
+    private final static String TAG = MetaData.class.getSimpleName(); // 定义一个日志标签，用于日志输出时标识来源
 
-    private String mRelatedGid = null; // 与任务相关的全局ID
+    private String mRelatedGid = null; // 定义一个私有成员变量，用于存储与任务相关的全局ID
 
     /**
      * 设置元数据。
@@ -23,13 +23,16 @@ public class MetaData extends Task {
      * @param metaInfo 元信息的JSON对象。
      */
     public void setMeta(String gid, JSONObject metaInfo) {
-        try {
+        try {// 将任务的全局ID添加到元信息的JSON对象中
             metaInfo.put(GTaskStringUtils.META_HEAD_GTASK_ID, gid); // 将任务的全局ID添加到元信息中
         } catch (JSONException e) {
+            // 如果添加失败，记录错误日志
             Log.e(TAG, "failed to put related gid");
         }
-        setNotes(metaInfo.toString()); // 将元信息设置为任务的笔记
-        setName(GTaskStringUtils.META_NOTE_NAME); // 设置任务的名称为特定的元数据标志名称
+        // 将元信息的JSON对象字符串设置为任务的笔记字段
+        setNotes(metaInfo.toString()); 
+        // 设置任务的名称为特定的元数据标志名称
+        setName(GTaskStringUtils.META_NOTE_NAME);
     }
 
     /**
@@ -38,6 +41,7 @@ public class MetaData extends Task {
      * @return 相关的全局ID字符串。
      */
     public String getRelatedGid() {
+        // 返回与任务相关的全局ID
         return mRelatedGid;
     }
 
@@ -48,6 +52,7 @@ public class MetaData extends Task {
      */
     @Override
     public boolean isWorthSaving() {
+        // 如果任务的笔记字段不为空，则认为任务值得保存
         return getNotes() != null;
     }
 
@@ -58,12 +63,17 @@ public class MetaData extends Task {
      */
     @Override
     public void setContentByRemoteJSON(JSONObject js) {
+        // 首先调用父类的方法设置内容
         super.setContentByRemoteJSON(js);
+        // 如果任务的笔记字段不为空
         if (getNotes() != null) {
             try {
+                // 从笔记中提取元信息的JSON对象
                 JSONObject metaInfo = new JSONObject(getNotes().trim());
-                mRelatedGid = metaInfo.getString(GTaskStringUtils.META_HEAD_GTASK_ID); // 从笔记中提取相关的全局ID
+                // 从元信息中提取相关的全局ID，并存储到成员变量mRelatedGid中
+                mRelatedGid = metaInfo.getString(GTaskStringUtils.META_HEAD_GTASK_ID); 
             } catch (JSONException e) {
+                // 如果提取失败，记录警告日志，并将相关ID设置为null
                 Log.w(TAG, "failed to get related gid");
                 mRelatedGid = null; // 提取失败时，设置相关ID为null
             }
@@ -77,7 +87,7 @@ public class MetaData extends Task {
      */
     @Override
     public void setContentByLocalJSON(JSONObject js) {
-        // this function should not be called
+        // 由于MetaData类的特殊性，不应该通过本地JSON对象设置内容，所以抛出异常
         throw new IllegalAccessError("MetaData:setContentByLocalJSON should not be called");
     }
 
@@ -88,6 +98,7 @@ public class MetaData extends Task {
      */
     @Override
     public JSONObject getLocalJSONFromContent() {
+        // 同样，由于MetaData类的特殊性，不应该从内容生成本地JSON对象，所以抛出异常
         throw new IllegalAccessError("MetaData:getLocalJSONFromContent should not be called");
     }
 
@@ -99,6 +110,7 @@ public class MetaData extends Task {
      */
     @Override
     public int getSyncAction(Cursor c) {
+        // 由于MetaData类的特殊性，不应该获取同步操作类型，所以抛出异常
         throw new IllegalAccessError("MetaData:getSyncAction should not be called");
     }
 
