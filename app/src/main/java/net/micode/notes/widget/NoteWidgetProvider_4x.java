@@ -1,8 +1,13 @@
-/*
- * 版权声明：MiCode开源社区（www.micode.net）
- *
- * 本代码遵循Apache 2.0开源协议
- * 详细授权信息请访问：http://www.apache.org/licenses/LICENSE-2.0
+/**
+ * 这段代码定义了一个名为 NoteWidgetProvider_4x 的类，它是一个4x大小的便签小部件提供者，继承自 NoteWidgetProvider 类。以下是其主要功能总结：
+ * 更新逻辑：
+ * 覆盖了 onUpdate 方法，调用了父类的 update 方法，用于处理小部件在界面更新时的逻辑。
+ * 布局资源：
+ * 实现了 getLayoutId 方法，用于获取小部件的布局资源ID，这里返回的是 R.layout.widget_4x，表示4x大小的便签小部件所使用的布局。
+ * 背景资源：
+ * 覆盖了 getBgResourceId 方法，用于获取小部件背景资源的ID。调用了 ResourceParser.WidgetBgResources.getWidget4xBgResource(bgId) 方法，根据给定的背景资源索引ID获取对应的背景资源ID。
+ * 小部件类型：
+ * 实现了 getWidgetType 方法，用于获取当前小部件的类型。这里返回的是 Notes.TYPE_WIDGET_4X，表示4x大小的便签小部件的类型。
  */
 
 package net.micode.notes.widget;

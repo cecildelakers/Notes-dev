@@ -1,6 +1,15 @@
-/*
- * 注意：此代码段的版权归 MiCode 开源社区所有（www.micode.net）
- * 本代码遵循 Apache 2.0 许可证，您可以在 http://www.apache.org/licenses/LICENSE-2.0 查看许可证内容。
+/**
+ * 该抽象类主要负责管理笔记小部件的更新和删除，以及处理小部件的点击事件，同时提供了抽象方法供子类实现具体的资源获取和类型定义。
+ * 小部件更新：
+ * 提供了 update 方法，用于更新小部件的显示内容。可以根据是否为隐私模式进行更新。
+ * 小部件删除：
+ * 覆盖了 onDeleted 方法，当小部件被删除时，更新数据库中对应小部件的ID为无效ID。
+ * 查询笔记信息：
+ * 提供了 getNoteWidgetInfo 方法，根据小部件ID查询对应的笔记信息。
+ * 点击事件设置：
+ * 为小部件的点击事件设置了 PendingIntent，根据是否为隐私模式设置不同的点击行为。
+ * 抽象方法：
+ * 提供了抽象方法 getBgResourceId、getLayoutId 和 getWidgetType，用于获取背景资源的ID、小部件布局的ID和小部件的类型。
  */
 
 package net.micode.notes.widget;
