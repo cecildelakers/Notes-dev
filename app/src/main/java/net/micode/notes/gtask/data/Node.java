@@ -3,14 +3,15 @@
  * 它是用于表示通用数据节点的抽象类，具体的数据操作和格式转换由其子类实现。
  */
 
-package net.micode.notes.gtask.data;
+package net.micode.notes.gtask.data;// 定义了这个类所在的包名，表明这个类是net.micode.notes.gtask.data包下的一个类。
 
-import android.database.Cursor;
+import android.database.Cursor;// 导入了android数据库的Cursor类，用于操作数据库。
 
-import org.json.JSONObject;
+import org.json.JSONObject;// 导入了JSON工具类，用于处理JSON格式的数据。
 
 // 定义节点同步动作的常量
 public abstract class Node {
+    // 以下是定义的不同同步动作的常量，用于标识节点在同步过程中的不同状态。
     public static final int SYNC_ACTION_NONE = 0; // 无动作
     public static final int SYNC_ACTION_ADD_REMOTE = 1; // 添加远程节点
     public static final int SYNC_ACTION_ADD_LOCAL = 2; // 添加本地节点
@@ -21,6 +22,7 @@ public abstract class Node {
     public static final int SYNC_ACTION_UPDATE_CONFLICT = 7; // 更新冲突
     public static final int SYNC_ACTION_ERROR = 8; // 同步错误
 
+    // 定义节点的基本属性
     private String mGid; // 全局唯一标识符
     private String mName; // 节点名称
     private long mLastModified; // 最后修改时间
