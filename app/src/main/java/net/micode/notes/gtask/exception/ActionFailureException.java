@@ -1,10 +1,14 @@
-/*
- * ActionFailureException 类的注释
+/**
+ * 这段代码定义了一个名为 ActionFailureException 的异常类，用于表示操作失败的异常情况。以下是其主要功能总结：
  *
- * 该异常类是运行时异常的子类，用于表示操作失败的异常情况。它可以包含一个错误消息和导致异常的 Throwable 对象。
- * 这个类主要是为了处理任务或动作执行失败的情况，提供了一个通用的方式来报告和处理这类错误。
+ * 继承关系：ActionFailureException 类是 RuntimeException 的子类，因此它继承了 RuntimeException 类的所有特性和行为。
  *
- * 许可证信息: 见类文件头部的版权声明
+ * 构造函数：提供了三种不同的构造函数，用于创建不同类型的 ActionFailureException 实例：
+ *
+ * 无参构造函数：创建一个不带详细信息的异常实例。
+ * 带有详细信息的构造函数：创建一个包含错误信息的异常实例。
+ * 带有详细信息和导致异常的 Throwable 对象的构造函数：创建一个包含错误信息和导致异常的原因的异常实例。
+ * 序列化版本号：定义了一个静态的 serialVersionUID 常量，用于确保序列化和反序列化过程中的兼容性。
  */
 
 package net.micode.notes.gtask.exception;
