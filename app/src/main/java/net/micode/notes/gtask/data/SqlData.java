@@ -3,7 +3,7 @@
  * 提供了从 JSON 对象设置内容，从数据库 Cursor 加载数据，以及提交数据更新到数据库的功能。
  */
 package net.micode.notes.gtask.data;
-
+// 导入了Android框架中的相关类，用于数据库操作、内容解析、日志记录等。
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -11,7 +11,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
-
+// 导入了项目中自定义的类，用于数据操作和异常处理。
 import net.micode.notes.data.Notes;
 import net.micode.notes.data.Notes.DataColumns;
 import net.micode.notes.data.Notes.DataConstants;
@@ -72,6 +72,7 @@ public class SqlData {
      * @param context 上下文对象，用于获取ContentResolver。
      */
     public SqlData(Context context) {
+        // 初始化成员变量，设置默认的MIME类型和空内容。
         mContentResolver = context.getContentResolver();
         mIsCreate = true;
         mDataId = INVALID_ID;
@@ -88,6 +89,7 @@ public class SqlData {
      * @param c 数据项的Cursor对象，用于加载数据。
      */
     public SqlData(Context context, Cursor c) {
+        // 初始化成员变量，并通过Cursor加载数据。
         mContentResolver = context.getContentResolver();
         mIsCreate = false;
         loadFromCursor(c);
@@ -99,6 +101,7 @@ public class SqlData {
      * @param c 数据项的Cursor对象。
      */
     private void loadFromCursor(Cursor c) {
+        // 从Cursor中获取数据并赋值给成员变量。
         mDataId = c.getLong(DATA_ID_COLUMN);
         mDataMimeType = c.getString(DATA_MIME_TYPE_COLUMN);
         mDataContent = c.getString(DATA_CONTENT_COLUMN);
@@ -112,6 +115,7 @@ public class SqlData {
      * @throws JSONException 如果解析JSON时出错。
      */
     public void setContent(JSONObject js) throws JSONException {
+        // 根据JSON对象中的数据更新成员变量，并记录数据变化。
         long dataId = js.has(DataColumns.ID) ? js.getLong(DataColumns.ID) : INVALID_ID;
         if (mIsCreate || mDataId != dataId) {
             mDiffDataValues.put(DataColumns.ID, dataId);
@@ -150,10 +154,12 @@ public class SqlData {
      * @throws JSONException 如果构建JSON对象时出错。
      */
     public JSONObject getContent() throws JSONException {
+        // 如果是新创建的数据项且尚未在数据库中创建，则返回null。
         if (mIsCreate) {
             Log.e(TAG, "it seems that we haven't created this in database yet");
             return null;
         }
+        // 构建并返回包含数据项内容的JSON对象。
         JSONObject js = new JSONObject();
         js.put(DataColumns.ID, mDataId);
         js.put(DataColumns.MIME_TYPE, mDataMimeType);
@@ -170,7 +176,7 @@ public class SqlData {
      * @param version 数据项的版本号。
      */
     public void commit(long noteId, boolean validateVersion, long version) {
-
+// 根据当前状态（创建或更新）执行不同的数据库操作。
         if (mIsCreate) {
             // 处理新数据项的插入
             if (mDataId == INVALID_ID && mDiffDataValues.containsKey(DataColumns.ID)) {
