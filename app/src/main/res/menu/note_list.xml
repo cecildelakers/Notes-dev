@@ -41,5 +41,18 @@
     <item
         android:id="@+id/menu_search"
         android:title="@string/menu_search"/>
+    <item
+        android:id="@+id/menu_secret"
+        android:title="@string/menu_secret"/>
+
+    <item
+        android:id="@+id/menu_quit_secret"
+        android:title="@string/menu_quit_secret"/>
+    <item
+        android:id="@+id/menu_spider"
+        android:title="@string/menu_spider"/>
+    <item
+        android:id="@+id/menu_wang"
+        android:title="@string/menu_wang"/>
 </menu>
 

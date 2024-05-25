@@ -17,6 +17,8 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="menu_secret">私密模式</string>
+    <string name="menu_quit_secret">退出私密模式</string>
     <string name="app_name">便签</string>
     <string name="app_widget2x2">便签2x2</string>
     <string name="app_widget4x4">便签4x4</string>
@@ -29,6 +31,8 @@
     <string name="note_alert_expired">已过期</string>
     <string name="format_date_ymd">yyyyMMdd</string>
     <string name="format_datetime_mdhm">MM月dd日 kk:mm</string>
+    <string name="menu_spider">主题：蜘蛛侠</string>
+    <string name="menu_wang">主题:wangxiaoyan</string>
     <string name="notealert_ok">知道了</string>
     <string name="notealert_enter">查看</string>
     <string name="note_link_tel">呼叫电话</string>

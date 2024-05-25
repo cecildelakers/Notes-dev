@@ -80,6 +80,7 @@ import java.util.HashSet;
 
 public class NotesListActivity extends Activity implements OnClickListener, OnItemLongClickListener {
     // 定义文件夹中笔记列表查询的标记
+    private int mode=-1;
     private static final int FOLDER_NOTE_LIST_QUERY_TOKEN = 0;
 
     // 定义文件夹列表查询的标记
@@ -98,6 +99,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
     private static final String PREFERENCE_ADD_INTRODUCTION = "net.micode.notes.introduction";
 
     // 列表编辑状态的枚举，包括笔记列表、子文件夹和通话记录文件夹
+    public static int secret_mode = 0;
     private enum ListEditState {
         NOTE_LIST, SUB_FOLDER, CALL_RECORD_FOLDER
     }
@@ -172,6 +174,8 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.note_list);
+//       getWindow().setBackgroundDrawableResource(R.drawable.spider);
+        getWindow().setBackgroundDrawableResource(R.drawable.wang);
         initResources();
 
         // 用户首次使用时插入介绍信息
@@ -547,17 +551,49 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
      * 异步查询笔记列表。
      * 根据当前文件夹ID选择不同的查询条件，启动一个后台查询处理该查询。
      */
+//    private void startAsyncNotesListQuery() {
+//        // 根据当前文件夹ID选择查询条件
+//        String selection = (mCurrentFolderId == Notes.ID_ROOT_FOLDER) ? ROOT_FOLDER_SELECTION
+//                : NORMAL_SELECTION;
+//        // 启动查询，排序方式为类型降序，修改日期降序
+//        mBackgroundQueryHandler.startQuery(FOLDER_NOTE_LIST_QUERY_TOKEN, null,
+//                Notes.CONTENT_NOTE_URI, NoteItemData.PROJECTION, selection, new String[]{
+//                        String.valueOf(mCurrentFolderId)
+//                }, NoteColumns.TYPE + " DESC," + NoteColumns.MODIFIED_DATE + " DESC");
+//    }
     private void startAsyncNotesListQuery() {
-        // 根据当前文件夹ID选择查询条件
         String selection = (mCurrentFolderId == Notes.ID_ROOT_FOLDER) ? ROOT_FOLDER_SELECTION
                 : NORMAL_SELECTION;
-        // 启动查询，排序方式为类型降序，修改日期降序
-        mBackgroundQueryHandler.startQuery(FOLDER_NOTE_LIST_QUERY_TOKEN, null,
-                Notes.CONTENT_NOTE_URI, NoteItemData.PROJECTION, selection, new String[]{
-                        String.valueOf(mCurrentFolderId)
-                }, NoteColumns.TYPE + " DESC," + NoteColumns.MODIFIED_DATE + " DESC");
-    }
+        if(secret_mode == 0) {
+            mBackgroundQueryHandler.startQuery(FOLDER_NOTE_LIST_QUERY_TOKEN, null,
+                    Notes.CONTENT_NOTE_URI, NoteItemData.PROJECTION, selection, new String[]{
+                            String.valueOf(mCurrentFolderId)
+                    }, NoteColumns.TYPE + " DESC," + NoteColumns.MODIFIED_DATE + " DESC");
+        }
+        else{
+            String str1 = "520";
+            String [] PROJECTION = new String [] {  //定义一个新的PROJECTION数组，只换掉SNIPPET
+                    NoteColumns.ID,
+                    NoteColumns.ALERTED_DATE,
+                    NoteColumns.BG_COLOR_ID,
+                    NoteColumns.CREATED_DATE,
+                    NoteColumns.HAS_ATTACHMENT,
+                    NoteColumns.MODIFIED_DATE,
+                    NoteColumns.NOTES_COUNT,
+                    NoteColumns.PARENT_ID,
+//                    NoteColumns.SNIPPET,
+                    str1,
+                    NoteColumns.TYPE,
+                    NoteColumns.WIDGET_ID,
+                    NoteColumns.WIDGET_TYPE,
+            };
+            mBackgroundQueryHandler.startQuery(FOLDER_NOTE_LIST_QUERY_TOKEN, null,
+                    Notes.CONTENT_NOTE_URI, PROJECTION, selection, new String[]{
+                            String.valueOf(mCurrentFolderId)
+                    }, NoteColumns.TYPE + " DESC," + NoteColumns.MODIFIED_DATE + " DESC");
 
+        }
+    }
     /**
      * 处理后台查询的类。
      * 继承自AsyncQueryHandler，用于处理异步查询完成后的操作。
@@ -1066,6 +1102,16 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         } else {
             Log.e(TAG, "Wrong state:" + mState);
         }
+        if(secret_mode == 1)
+            menu.findItem(R.id.menu_secret).setVisible(false);
+        else
+            menu.findItem(R.id.menu_quit_secret).setVisible(false);
+        if (mode == -1){
+            menu.findItem(R.id.menu_wang).setVisible(false);
+        }else if(mode == 1) {
+            menu.findItem(R.id.menu_spider).setVisible(false);
+        }
+
         return true;
     }
 
@@ -1078,6 +1124,16 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.menu_spider: {
+                mode=1;
+                getWindow().setBackgroundDrawableResource(R.drawable.spider);
+                break;
+            }
+            case R.id.menu_wang: {
+                mode=-1;
+                getWindow().setBackgroundDrawableResource(R.drawable.wang);
+                break;
+            }
             case R.id.menu_new_folder: {
                 showCreateOrModifyFolderDialog(true); // 显示创建新文件夹的对话框
                 break;
@@ -1110,6 +1166,48 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
             case R.id.menu_search:
                 onSearchRequested(); // 触发搜索请求
                 break;
+            case R.id.menu_secret: {    //进入私密模式
+                secret_mode = 1;
+                AlertDialog.Builder dialog = new AlertDialog.Builder(NotesListActivity.this);
+                dialog.setTitle("重要提醒");
+                dialog.setMessage("您确认进入私密模式吗？");
+                dialog.setCancelable(false);
+                dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startAsyncNotesListQuery();
+                        Toast.makeText(NotesListActivity.this,"您已进入私密模式",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which){}
+                });
+                dialog.show();
+                startAsyncNotesListQuery();
+                Toast.makeText(this,"您已进入私密模式",Toast.LENGTH_SHORT).show();
+                break;
+            }
+            case R.id.menu_quit_secret:{    //退出私密模式
+                secret_mode = 0;
+                AlertDialog.Builder dialog = new AlertDialog.Builder(NotesListActivity.this);
+                dialog.setTitle("重要提醒");
+                dialog.setMessage("您确认退出私密模式吗？");
+                dialog.setCancelable(false);
+                dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startAsyncNotesListQuery();
+                        Toast.makeText(NotesListActivity.this,"您已退出私密模式",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which){}
+                });
+                dialog.show();
+                break;
+            }
             default:
                 break;
         }

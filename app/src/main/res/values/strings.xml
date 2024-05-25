@@ -17,6 +17,8 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="menu_secret">secret model</string>
+    <string name="menu_quit_secret">quit secret model</string>
     <string name="app_name">Notes</string>
     <string name="app_widget2x2">Notes 2x2</string>
     <string name="app_widget4x4">Notes 4x4</string>
@@ -33,6 +35,8 @@
     <string name="notealert_enter">Take a look</string>
     <string name="note_link_tel">Call</string>
     <string name="note_link_email">Send email</string>
+    <string name="menu_spider">background:spider</string>
+    <string name="menu_wang">background:wang</string>
     <string name="note_link_web">Browse web</string>
     <string name="note_link_other">Open map</string>
     <!-- Text export file information -->

@@ -126,8 +126,10 @@ public class AlarmAlertActivity extends Activity implements OnClickListener, OnD
      * 播放提醒声音。
      * 根据系统设置选择合适的音频流类型，并尝试播放选定的报警声音。
      */
+
     private void playAlarmSound() {
         //闹钟提示音激发
+        //对playAlarmSound方法中异常处理的优化
         Uri url = RingtoneManager.getActualDefaultRingtoneUri(this, RingtoneManager.TYPE_ALARM);
 
         // 检查是否在静音模式下影响报警声音

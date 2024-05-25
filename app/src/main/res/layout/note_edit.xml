@@ -76,13 +76,12 @@
                 android:background="@drawable/bg_color_btn_mask" />
 
             <ScrollView
-                android:layout_width="fill_parent"
-                android:layout_height="0dip"
-                android:layout_weight="1"
-                android:scrollbars="none"
-                android:overScrollMode="never"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="left|top"
-                android:fadingEdgeLength="0dip">
+                android:fadingEdgeLength="0dip"
+                android:overScrollMode="never"
+                android:scrollbars="none">
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -92,20 +91,19 @@
                         android:id="@+id/note_edit_view"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="left|top"
                         android:background="@null"
-                        android:autoLink="all"
+                        android:gravity="left|top"
+                        android:lineSpacingMultiplier="1.2"
                         android:linksClickable="false"
                         android:minLines="12"
-                        android:textAppearance="@style/TextAppearancePrimaryItem"
-                        android:lineSpacingMultiplier="1.2" />
+                        android:textAppearance="@style/TextAppearancePrimaryItem" />
 
                     <LinearLayout
                         android:id="@+id/note_edit_list"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:layout_marginLeft="-10dip"
+                        android:orientation="vertical"
                         android:visibility="gone" />
                 </LinearLayout>
             </ScrollView>
@@ -400,4 +398,29 @@
                 android:src="@drawable/selected" />
         </FrameLayout>
     </LinearLayout>
+
+<!--    &lt;!&ndash; 新添加的水平滚动视图 &ndash;&gt;-->
+<!--    <HorizontalScrollView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="37dp"-->
+<!--        android:layout_gravity="bottom">-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="horizontal">-->
+<!--            <Button-->
+<!--                android:id="@+id/action_bold"-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:background="@drawable/action_bold" />-->
+<!--            <Button-->
+<!--                android:id="@+id/action_italic"-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:background="@drawable/action_italic" />-->
+<!--            &lt;!&ndash; 其它按钮 &ndash;&gt;-->
+<!--        </LinearLayout>-->
+<!--    </HorizontalScrollView>-->
 </FrameLayout>

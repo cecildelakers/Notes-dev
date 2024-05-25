@@ -6,11 +6,13 @@
     布局使用了线性布局和框架布局的组合来实现各个组件的定位和排列。
 -->
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@drawable/list_background">
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <!--    android:background="@drawable/list_background"-->
     <!-- 线性布局，垂直排列，包含标题栏和ListView -->
     <LinearLayout
         android:layout_width="fill_parent"
