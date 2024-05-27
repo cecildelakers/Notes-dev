@@ -174,7 +174,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.note_list);
-//       getWindow().setBackgroundDrawableResource(R.drawable.spider);
+        //getWindow().setBackgroundDrawableResource(R.drawable.spider);
         getWindow().setBackgroundDrawableResource(R.drawable.wang);
         initResources();
 

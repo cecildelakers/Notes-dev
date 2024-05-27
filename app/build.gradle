@@ -33,3 +33,8 @@ android {
     }
 
 }
+
+dependencies {
+    // 新增富文本插件
+    implementation 'jp.wasabeef:richeditor-android:1.2.2'
+}

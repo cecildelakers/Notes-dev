@@ -27,6 +27,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -70,6 +71,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import jp.wasabeef.richeditor.RichEditor;
 
 
 public class NoteEditActivity extends Activity implements OnClickListener,
@@ -148,7 +151,18 @@ public class NoteEditActivity extends Activity implements OnClickListener,
 
     private View mFontSizeSelector; // 字号选择器
 
-    private EditText mNoteEditor; // 笔记编辑器
+    /**
+     * 修改代码：富文本编辑器
+     */
+    private RichEditor mNoteEditor;
+    private String mText;
+    private int mNoteLength;
+    //private EditText mNoteEditor;
+
+    //RichEditor类文件
+    public interface OnTextChangeListener {
+        void onTextChange(String text);
+    }
 
     private View mNoteEditorPanel; // 笔记编辑器面板
 
@@ -318,14 +332,14 @@ public class NoteEditActivity extends Activity implements OnClickListener,
      */
     private void initNoteScreen() {
         // 设置编辑器的文本外观
-        mNoteEditor.setTextAppearance(this, TextAppearanceResources
-                .getTexAppearanceResource(mFontSizeId));
+        //mNoteEditor.setTextAppearance(this, TextAppearanceResources
+                //.getTexAppearanceResource(mFontSizeId));
         // 根据当前笔记的类型，切换到列表模式或高亮查询结果模式
         if (mWorkingNote.getCheckListMode() == TextNote.MODE_CHECK_LIST) {
             switchToListMode(mWorkingNote.getContent());
         } else {
-            mNoteEditor.setText(getHighlightQueryResult(mWorkingNote.getContent(), mUserQuery));
-            mNoteEditor.setSelection(mNoteEditor.getText().length());
+            mNoteEditor.setHtml(getHighlightQueryResult(mWorkingNote.getContent(), mUserQuery).toString());
+            //mNoteEditor.setSelection(mNoteEditor.getText().length());
         }
         // 隐藏所有背景选择器
         for (Integer id : sBgSelectorSelectionMap.keySet()) {
@@ -450,6 +464,24 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         return true;
     }
 
+
+    /**
+     * 新增方法：
+     * 初始化富文本编辑框
+     */
+    public void initRichEditor() {
+        mNoteEditor = findViewById(R.id.note_edit_view);
+        mNoteEditor.setEditorHeight(100);//设置编辑器界面高度
+        mNoteEditor.setEditorFontSize(22);//字体大小
+        mNoteEditor.setEditorFontColor(Color.BLACK);//字体颜色
+        mNoteEditor.setPadding(6, 5, 6, 5);//内边距
+        mNoteEditor.setPlaceholder("点击输入内容");//设置默认显示语句
+        mNoteEditor.setInputEnabled(true);//设置编辑器是否可用
+        //mNoteEditor.setBackgroundResource(mWorkingNote.getBgColorResId());//编辑背景
+    }
+
+
+
     /**
      * 初始化资源，包括视图和偏好设置。
      */
@@ -462,8 +494,41 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         mNoteHeaderHolder.tvAlertDate = (TextView) findViewById(R.id.tv_alert_date);
         mNoteHeaderHolder.ibSetBgColor = (ImageView) findViewById(R.id.btn_set_bg_color);
         mNoteHeaderHolder.ibSetBgColor.setOnClickListener(this);
+
         // 初始化编辑器和相关组件
-        mNoteEditor = (EditText) findViewById(R.id.note_edit_view);
+        //mNoteEditor = (EditText) findViewById(R.id.note_edit_view);
+        initRichEditor();
+        mNoteEditor.setOnTextChangeListener(new RichEditor.OnTextChangeListener() {
+            @Override
+            public void onTextChange(String text) {
+                mText = text;
+                mNoteLength = mText.length();
+                mNoteHeaderHolder.tvModified.setText(DateUtils.formatDateTime(NoteEditActivity.this,
+                        mWorkingNote.getModifiedDate(), DateUtils.FORMAT_SHOW_DATE
+                                | DateUtils.FORMAT_NUMERIC_DATE | DateUtils.FORMAT_SHOW_TIME
+                                | DateUtils.FORMAT_SHOW_YEAR) + "\n字符数：" + mNoteLength);
+            }
+        });
+
+        //加粗功能
+        findViewById(R.id.action_bold).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mNoteEditor.focusEditor();
+                mNoteEditor.setBold();
+            }
+        });
+
+        //斜体功能
+        findViewById(R.id.action_italic).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mNoteEditor.focusEditor();
+                mNoteEditor.setItalic();
+            }
+        });
+
+
         mNoteEditorPanel = findViewById(R.id.sv_note_edit);
         mNoteBgColorSelector = findViewById(R.id.note_bg_color_selector);
         // 设置背景选择器按钮点击监听器
@@ -561,8 +626,8 @@ public class NoteEditActivity extends Activity implements OnClickListener,
                 getWorkingText();
                 switchToListMode(mWorkingNote.getContent());
             } else {
-                mNoteEditor.setTextAppearance(this,
-                        TextAppearanceResources.getTexAppearanceResource(mFontSizeId));
+                //mNoteEditor.setTextAppearance(this,
+                        //TextAppearanceResources.getTexAppearanceResource(mFontSizeId));
             }
             mFontSizeSelector.setVisibility(View.GONE); // 隐藏字体大小选择器
         }
@@ -1015,14 +1080,14 @@ public class NoteEditActivity extends Activity implements OnClickListener,
     public void onCheckListModeChanged(int oldMode, int newMode) {
         // 切换到列表模式
         if (newMode == TextNote.MODE_CHECK_LIST) {
-            switchToListMode(mNoteEditor.getText().toString());
+            switchToListMode(mNoteEditor.getHtml());
         } else {
             // 切换回编辑模式
             if (!getWorkingText()) {
                 mWorkingNote.setWorkingText(mWorkingNote.getContent().replace(TAG_UNCHECKED + " ",
                         ""));
             }
-            mNoteEditor.setText(getHighlightQueryResult(mWorkingNote.getContent(), mUserQuery));
+            mNoteEditor.setHtml(getHighlightQueryResult(mWorkingNote.getContent(), mUserQuery).toString());
             mEditTextList.setVisibility(View.GONE);
             mNoteEditor.setVisibility(View.VISIBLE);
         }
@@ -1052,7 +1117,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
             }
             mWorkingNote.setWorkingText(sb.toString());
         } else {
-            mWorkingNote.setWorkingText(mNoteEditor.getText().toString());
+            mWorkingNote.setWorkingText(mNoteEditor.getHtml());
         }
         return hasChecked;
     }
